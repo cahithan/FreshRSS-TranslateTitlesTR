@@ -1,8 +1,8 @@
 <form action="<?php echo _url('extension', 'configure', 'e', urlencode($this->getName())); ?>" method="post">
     <input type="hidden" name="_csrf" value="<?php echo FreshRSS_Auth::csrfToken(); ?>" />
-    <!-- 翻译服务选择 -->
+    <!-- Çeviri hizmeti seçimi -->
     <div class="form-group">
-        <label class="group-name">选择翻译服务:</label>
+        <label class="group-name">Bir çeviri hizmeti seçin:</label>
         <div class="group-controls">
             <div class="form-group">
                 <input type="radio" id="translate-service-deeplx" name="TranslateService" value="deeplx" required <?php echo (FreshRSS_Context::$user_conf->TranslateService == 'deeplx' ? 'checked' : ''); ?>>
@@ -10,27 +10,27 @@
             </div>
             <div class="form-group">
                 <input type="radio" id="translate-service-google" name="TranslateService" value="google" <?php echo (FreshRSS_Context::$user_conf->TranslateService == 'google' ? 'checked' : ''); ?>>
-                <span for="translate-service-google">谷歌翻译</span>
+                <span for="translate-service-google">Google Çeviri</span>
             </div>
         </div>
     </div>
 
-    <!-- DeepLX API URL 设置 -->
+    <!-- DeepLX API URL kurmak -->
     <div class="form-group">
-        <label class="group-name" for="deeplx-api-url">DeepLX API地址:</label>
+        <label class="group-name" for="deeplx-api-url">DeepLX API kurmak:</label>
         <div class="group-controls">
             <input id="deeplx-api-url" required="required" name="DeeplxApiUrl" type="text" value="<?php echo FreshRSS_Context::$user_conf->DeeplxApiUrl; ?>">
         </div>
     </div>
 
-    <!-- 订阅源翻译设置 -->
+    <!-- Feed çeviri ayarları -->
     <div class="form-group">
-        <label class="group-name">订阅源翻译设置:</label>
+        <label class="group-name">Feed çeviri ayarları:</label>
         <div class="group-controls">
             <?php 
             $feeds = FreshRSS_Factory::createFeedDao()->listFeeds();
             if (empty($feeds)): ?>
-                <span>暂无订阅源，请添加后重试</span>
+                <span>Şu anda yayın yok, lütfen ekleyip tekrar deneyin.</span>
             <?php else: ?>
                 <?php foreach ($feeds as $id => $feed): ?>
                 <li class="form-group">
