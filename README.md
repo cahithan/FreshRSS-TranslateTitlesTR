@@ -1,6 +1,7 @@
 # TranslateTitlesTr
 
-'TranslateTitlesTR' FreshRSS için geliştirilmiş , belirli yayınlardaki makale başlıklarını Türkçe’ye çevirebilen bir eklentidir . Kullanıcılar çeviriyi tamamlamak için DeeplX veya Google Translate hizmetlerini kullanmayı seçebilir.
+**TranslateTitlesTR** FreshRSS için geliştirilmiş , belirli yayınlardaki makale başlıklarını Türkçe’ye çevirebilen bir eklentidir . Kullanıcılar çeviriyi tamamlamak için DeeplX veya Google Translate hizmetlerini kullanmayı seçebilir. Ben Orjinal kod yazarının yazdığı
+Deeplx'i kullanmıyorum, Google translate ile başlıkları gayet güzel çeviriyor.
 
 > **Açıklama** : Bu proje, geliştirme sürecinde ChatGPT'yi yoğun bir şekilde kullandı ve OpenAI'ye şükranlarımı sunmak isterim .
 
