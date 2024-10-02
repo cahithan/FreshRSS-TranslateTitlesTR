@@ -7,7 +7,7 @@ class TranslationService {
     public function __construct($serviceType) {
         $this->serviceType = $serviceType;
         $this->deeplxBaseUrl = FreshRSS_Context::$user_conf->DeeplxApiUrl; // DeeplX API URL
-        $this->googleBaseUrl = 'https://translate.googleapis.com/translate_a/single'; // 谷歌翻译API的URL
+        $this->googleBaseUrl = 'https://translate.googleapis.com/translate_a/single'; // Google Çeviri API'si URL'si
     }
 
     public function translate($text) {
@@ -19,14 +19,14 @@ class TranslationService {
     }
 
     private function translateWithGoogle($text) {
-        // 谷歌翻译逻辑
+        // Google Çeviri Mantığı
         $translatedText = '';
 
-        // 构建谷歌翻译API的查询参数
+        //Google Translate API'sı için sorgu parametreleri oluşturma
         $queryParams = http_build_query([
             'client' => 'gtx',
-            'sl' => 'auto',     // 源语言设置为自动检测
-            'tl' => 'zh',       // 目标语言设置为中文
+            'sl' => 'auto',     // Kaynak dili otomatik algılamaya ayarlandı
+            'tl' => 'tr',       // Hedef dil Türkçe olarak ayarlandı
             'dt' => 't',
             'q' => $text,
         ]);
@@ -49,7 +49,7 @@ class TranslationService {
                 throw new Exception("Failed to get content from Google Translate API.");
             }
 
-            // 解析谷歌翻译的响应
+            // Google Çeviri yanıtını ayrıştır
             $response = json_decode($result, true);
             if (!empty($response[0][0][0])) {
                 $translatedText = $response[0][0][0];
@@ -57,10 +57,10 @@ class TranslationService {
                 throw new Exception("Google Translate API returned an empty translation.");
             }
 
-            // 记录成功的翻译
+            // Başarılı çevirileri kaydedin
             // error_log("Translation successful for text: " . $text . "; Translated: " . $translatedText);
         } catch (Exception $e) {
-            // 记录错误信息
+            // Günlük hata mesajı
             error_log("Error in translation: " . $e->getMessage());
         }
 
@@ -68,17 +68,17 @@ class TranslationService {
     }
 
     private function translateWithDeeplx($text) {
-        // DeeplX翻译逻辑
+        // DeeplX çeviri mantığı
         $translatedText = '';
 
-        // 增加1-3秒的随机时间间隔
+        // 1-3 saniyelik rastgele bir zaman aralığı ekleyin
         sleep(rand(1, 3));
 
-        // 构建POST数据
+        // POST verilerini oluşturun
         $postData = json_encode([
             'text' => $text,
             'source_lang' => 'auto',
-            'target_lang' => 'ZH' // 目标语言设置为中文
+            'target_lang' => 'TR' // Hedef dil Türkçe olarak ayarlandı
         ]);
 
         $options = [
@@ -86,20 +86,20 @@ class TranslationService {
                 'header' => "Content-Type: application/json\r\n",
                 'method' => 'POST',
                 'content' => $postData,
-                'timeout' => 3, // 设置超时时间
+                'timeout' => 3, // Zaman aşımını ayarla
             ]
         ];
 
         $context = stream_context_create($options);
 
         try {
-            // 发送请求到DeeplX API
+            // DeeplX API'sine istek gönder
             $result = file_get_contents($this->deeplxBaseUrl, false, $context);
             if ($result === FALSE) {
                 throw new Exception("Failed to get content from DeeplX API.");
             }
 
-            // 解析响应
+            // Yanıtı ayrıştır
             $response = json_decode($result, true);
             if (isset($response['data']) && !empty($response['data'])) {
                 $translatedText = $response['data'];
@@ -107,10 +107,10 @@ class TranslationService {
                 throw new Exception("DeeplX API returned an empty translation. Response code: " . $response['code']);
             }
 
-            // 记录成功的翻译
+            // Başarılı çevirileri kaydedin
             // error_log("Translation successful for text: " . $text . "; Translated: " . $translatedText);
         } catch (Exception $e) {
-            // 处理错误情况
+            // Hata koşullarını ele alın
             error_log("Error in DeeplX translation: " . $e->getMessage());
         }
 
