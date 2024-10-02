@@ -22,7 +22,8 @@ Deeplx'i kullanmıyorum, Google translate ile başlıkları gayet güzel çeviri
 5.	Yönetici paneline gidin ardından Eklentiler bölümüne gidin.
 6.	Eklenti listesinde TranslateTitlesCN "Etkinleştir"e tıklayın.
 7.	Açılan menüden çeviri yapılmasını istediğiniz konulara tik atın ve onayla butonuna basın.
-8.	FreshRSS'i yenilediğinizde eklenti çalışacaktır ve o anda başlıkları türkçe olarak göreceksiniz, eski konuları çevirmeyecek.
+8.	FreshRSS'i yenilediğinizde eklenti çalışacaktır ve başlıkları Türkçe + ENG olarak göreceksiniz,
+    eklentiyi yüklediğiniz andan önceki eski konuları çevirmeyecek.
 
 
 ## Nasıl kullanılır
