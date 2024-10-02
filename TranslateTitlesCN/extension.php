@@ -2,7 +2,7 @@
 require_once('lib/TranslateController.php');
 
 class TranslateTitlesExtension extends Minz_Extension {
-    // 默认DeepLX API 地址
+    //Varsayılan DeepLX API adresi
     private const ApiUrl = 'http://localhost:1188/translate';
 
     public function init() {
@@ -36,7 +36,7 @@ class TranslateTitlesExtension extends Minz_Extension {
     }
 
     public function handleUninstallAction() {
-        // 清除所有与插件相关的用户配置
+        //Eklentiyle ilgili tüm kullanıcı yapılandırmalarını temizle
         if (isset(FreshRSS_Context::$user_conf->TranslateService)) {
             unset(FreshRSS_Context::$user_conf->TranslateService);
         }
@@ -50,14 +50,14 @@ class TranslateTitlesExtension extends Minz_Extension {
     }
 
     public function translateTitle($entry) {
-        // 检查是否启用了翻译
+        //Çevirinin etkin olup olmadığını kontrol edin
         $feedId = $entry->feed()->id();
         if (isset(FreshRSS_Context::$user_conf->TranslateTitles[$feedId]) && FreshRSS_Context::$user_conf->TranslateTitles[$feedId] == '1') {
             $title = $entry->title();
             $translateController = new TranslateController();
             $translatedTitle = $translateController->translateTitle($title);
             if (!empty($translatedTitle)) {
-                $entry->_title($translatedTitle . ' - ' . $title); // 将翻译后的标题放在前，原文标题放在后
+                $entry->_title($translatedTitle . ' - ' . $title); // Çevrilmiş başlığı ilk sıraya ve orijinal başlığı en sona koyun
             }
         }
         return $entry;
