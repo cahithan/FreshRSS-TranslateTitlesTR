@@ -14,11 +14,12 @@
 
 ## Kurulum yöntemi
 
-1.	TranslateTitlesCNEklentiyi indirin .
-2.	TranslateTitlesCNKlasörü FreshRSS örneğinizin dizininin altına yerleştirin ./extensions.
-3.	FreshRSS örneğinizde oturum açın.
-4.	Yönetici paneline gidin ve Uzantılar bölümüne gidin.
-5.	Eklenti listesinde bulun TranslateTitlesCNve "Etkinleştir"e tıklayın.
+1.	TranslateTitlesTR Eklentiyi indirin .
+2.	TranslateTitlesTR Klasörü içindeki TranslateTitlesCN klsörünü
+    FreshRSS'in kurulu olduğu dizininin altındaki  ./extensions. klasörüne yerleştirin
+4.	FreshRSS örneğinizde oturum açın.
+5.	Yönetici paneline gidin ve Eklentiler bölümüne gidin.
+6.	Eklenti listesinde bulun TranslateTitlesCN "Etkinleştir"e tıklayın.
 
 
 ## Nasıl kullanılır
