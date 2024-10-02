@@ -8,9 +8,9 @@
 
 
 
-<img src="https://github.com/jacob2826/FreshRSS-TranslateTitlesCN/blob/main/screenshot-20231219-142233.png" width="300px"/>
+<img src="https://github.com/cahithan/FreshRSS-TranslateTitlesTR/blob/main/01.png" width="300px"/>
 
-<img src="https://github.com/jacob2826/FreshRSS-TranslateTitlesCN/blob/main/screenshot-20231219-142310.png" width="300px"/>
+<img src="https://github.com/cahithan/FreshRSS-TranslateTitlesTR/blob/main/02.png" width="300px"/>
 
 ## Kurulum yöntemi
 
