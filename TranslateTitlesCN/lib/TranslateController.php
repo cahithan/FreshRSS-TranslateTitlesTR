@@ -7,7 +7,7 @@ class TranslateController {
         $translationService = new TranslationService($serviceType);
         $translatedTitle = '';
         $attempts = 0;
-        $sleepTime = 1; // 初始等待时间
+        $sleepTime = 1; // ilk bekleme süresi
 
         error_log("Service: " . $serviceType . ", Title: " . $title);
 
@@ -20,17 +20,17 @@ class TranslateController {
             } catch (Exception $e) {
                 $attempts++;
                 sleep($sleepTime);
-                $sleepTime *= 2; // 每次失败后增加等待时间
+                $sleepTime *= 2; // Her arızadan sonra bekleme süresini artırın
             }
         }
 
-        // 如果翻译失败且当前服务为DeeplX，则尝试使用谷歌翻译
+        //Çeviri başarısız olursa ve mevcut hizmet DeeplX ise Google Translate'i kullanmayı deneyin
         if (empty($translatedTitle) && $serviceType == 'deeplx') {
             $translationService = new TranslationService('google');
             $translatedTitle = $translationService->translate($title);
         }
 
-        // 如果翻译仍然失败，使用原始标题
+        // Çeviri yine de başarısız olursa orijinal başlığı kullanın
         if (empty($translatedTitle)) {
             return $title;
         }
